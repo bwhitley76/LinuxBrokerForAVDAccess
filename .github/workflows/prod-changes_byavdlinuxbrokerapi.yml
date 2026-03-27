@@ -30,6 +30,7 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
+        working-directory: api
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
@@ -68,14 +69,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_65A75D539DA24BEB8D089F4D117C21B7 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F18CD9B925FB4FBEA7D7891BB304442D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_53A25B5BA9FC4CEDA0EFEFADB66384C3 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_fd067261-f8d4-4dde-a723-2cc86bb7176e }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7c146123-b808-4b8d-9c9a-38305d1c43f8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6c040251-d9da-4acb-9ab5-a93906c8011c }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'byavdlinuxbrokerapi'
+          app-name: 'avd-linux-broker-api-prod'
           slot-name: 'Production'
           
